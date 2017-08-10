@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ant-lint" default="lint">
+    <fileset id="php.files" dir="${basedir}">
+		<include name="**/*.php"/>
+		<exclude name="vendor/**"/>
+	</fileset>
+	<target name="lint">
+        <apply executable="php" failonerror="true" taskname="php-lint">
+            <arg value="-l"/>
+            <fileset refid="php.files"/>
+        </apply>
+		<property name="lint.done" value="true"/>
+    </target>
+</project>
+
+

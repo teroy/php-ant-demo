@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ant" default="full-build">
+    <target name="full-build" depends="lint,composer,phpmd,phpunit"/>
+	
+    <target name="lint">
+        <apply executable="php" failonerror="true" taskname="task-lint">
+            <arg value="-l"/>
+            <fileset dir="${basedir}">
+                <include name="**/*.php"/>
+				<exclude name="vendor/**"/>
+            </fileset>
+        </apply>
+		<property name="lint.done" value="true"/>
+    </target>
+
+	<target name="composer">
+        <exec executable="php" failonerror="true" taskname="task-composer">
+            <arg value="/usr/local/bin/composer"/>
+			<arg value="install"/>
+			<arg value="-vvv"/>
+        </exec>
+		<property name="composer.done" value="true"/>
+    </target>
+
+    <target name="phpmd">
+		<exec executable="./vendor/phpmd/phpmd/src/bin/phpmd" failonerror="false" taskname="task-phpmd">
+            <arg value="."/>
+            <arg value="text"/>
+            <arg value="codesize,unusedcode,naming"/>
+			<arg value="--exclude"/>
+			<arg value="vendor"/>
+        </exec>
+    </target>
+
+    <target name="phpunit">
+        <exec executable="./vendor/phpunit/phpunit/phpunit" failonerror="true" taskname="task-phpunit">
+            <arg value="--bootstrap"/>
+            <arg value="autoload.php"/>
+            <arg value="test"/>
+        </exec>
+    </target>
+</project>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ant" default="composer">
+	<target name="composer">
+        <exec executable="php" failonerror="true" taskname="composer-install">
+            <arg value="/usr/local/bin/composer"/>
+			<arg value="install"/>
+			<arg value="-vvv"/>
+        </exec>
+		<property name="composer.done" value="true"/>
+	</target>
+</project>

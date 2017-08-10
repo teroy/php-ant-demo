@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ant" default="phpmd">
+    <target name="phpmd">
+		<exec executable="./vendor/phpmd/phpmd/src/bin/phpmd" failonerror="true" taskname="task-phpmd">
+            <arg value="."/>
+            <arg value="text"/>
+            <arg value="codesize,unusedcode,naming"/>
+			<arg value="--exclude"/>
+			<arg value="vendor"/>
+        </exec>
+    </target>
+</project>
+
+

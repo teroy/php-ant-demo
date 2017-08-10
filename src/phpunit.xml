@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ant" default="phpunit">
+	<property name="test.dir" value="test"/>
+    <target name="phpunit">    
+		<exec executable="./vendor/phpunit/phpunit/phpunit" failonerror="true" taskname="phpunit">
+            <arg value="--bootstrap"/>
+            <arg value="autoload.php"/>
+            <arg value="${test.dir}"/>
+        </exec>
+    </target>
+</project>
+
+

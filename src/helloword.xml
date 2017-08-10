@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="hw" default="helloworld">
+    <property name="print.txt" value="hello world"/>
+	<target name="helloworld">
+		<echo message="${print.txt}" />
+    </target>
+</project>
+
+

@@ -1,0 +1,6 @@
+{
+    "require":{
+        "phpunit/phpunit":"5.7.20",
+        "phpmd/phpmd":"2.6.0"
+    }
+}
